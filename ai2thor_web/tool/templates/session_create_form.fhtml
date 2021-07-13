@@ -1,0 +1,76 @@
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="alert alert-danger">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<form action="/session/{{ session_id }}/create" method="post">
+    <div class="row">
+        <div class="col-6"><!--left side -->
+            <div class="form-group row justify-content-md-center">
+                <label for="controller" class="col-sm-3 col-mid-auto col-form-label">Controller:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="controller" name="controller">
+                </div>
+            </div>
+            <div class="form-group row justify-content-md-center">
+                <label for="assistant" class="col-sm-3 col-mid-auto col-form-label">Assistant:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="assistant" name="assistant">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-6">
+
+            <div class="form-group row justify-content-md-center">
+                <label for="monitor" class="col-sm-3" col-mid-auto col-form-label">Monitor:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="monitor" name="monitor">
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-md-center">
+                <label for="floor_plan" class="col-sm-3" col-mid-auto col-form-label">FloorPlan:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="floor_plan" name="floor_plan">
+                </div>
+            </div>
+
+        </div><!--right side -->
+
+        <div class="col-12">
+            <div class="form-group row justify-content-md-center">
+                <label for="target_objects" class="col-sm-2" col-mid-auto col-form-label">Target Objects:</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="target_objects" name="target_objects">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 bg-light p-4 mb-4"><!-- Bottom row -->
+            <div class="form-group row justify-content-md-center">
+                <label for="username" class="col-sm-3 col-md-auto col-form-label">Username:</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="username" name="username" value="">
+                </div>
+
+                <label for="password" class="col-sm-3 col-md-auto col-form-label">Password:</label>
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="password" name="password" value="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row  justify-content-md-center">
+                <div class="col-mid-auto">
+                    <button type="submit" class="btn btn-secondary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- form for teacher/student-->
+</form>

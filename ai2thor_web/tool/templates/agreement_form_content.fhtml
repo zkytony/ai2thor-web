@@ -1,0 +1,96 @@
+<div id="task-description">
+    <h2>Task description</h2>
+    You will be asked to join a Zoom call to collaborate with another
+    participant in an object search task. You will each be given a role:
+    assistant or leader. If you are the assistant, you will go to a
+    website where you can control a robot in an environment. If you are
+    the leader, you will talk with the assistant to move the robot
+    around the environment to find a target object. Your goal is to find
+    the object as quickly as possible.
+</div>
+
+<div id="agreement">
+
+    <h2>Agreement</h2>
+    By agreeing to take part in the task, you are consenting to the
+    recording of the Zoom call, which includes the audio, your assigned
+    Zoom name, and the text transcription of your conversation. Your
+    video will be turned off and NOT recorded. We will also record the
+    robot’s movement, and the demographic information you are providing
+    below. You will not be able to participate in the task without
+    signing this agreement.
+</div>
+
+
+<div class="form-group form-check" id="form-agree-check">
+    <input type="checkbox" class="form-check-input" id="agree-check" required>
+    <label class="form-check-label" for="agree-check">I agree </label>
+</div>
+<hr>
+
+<div class="form-group" id="data-fields">
+    <div class="form-group" id="age-input">
+        <label for="age">Age</label>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-less-20" value="<20" name="age">
+            <label class="custom-control-label" " for="age-less-20"><20</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-20-29" value="20-29" name="age">
+            <label class="custom-control-label" for="age-20-29">20-29</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-30-39" value="30-39" name="age">
+            <label class="custom-control-label" for="age-30-39">30-39</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-40-49" value="40-49" name="age">
+            <label class="custom-control-label" for="age-40-49">40-49</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-50-59" value="50-59" name="age">
+            <label class="custom-control-label" for="age-50-59">50-59</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="age-60+" value="60+" name="age">
+            <label class="custom-control-label" for="age-60+">60+</label>
+        </div>
+
+    </div>
+
+    <div class="form-group" id="gender-input">
+        <label for="gender">Gender</label>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="gender-female" value="female" name="gender">
+            <label class="custom-control-label" " for="gender-female">Female</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="gender-male" value="male" name="gender">
+            <label class="custom-control-label" for="gender-male">Male</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="gender-other" value="other" name="gender">
+            <label class="custom-control-label" for="gender-other">Other</label>
+        </div>
+    </div>
+
+    <div class="form-group" id="new-player-input">
+        <label for="newPlayer">Is this your first time?</label>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="new-yes" value="new-yes" name="newPlayer">
+            <label class="custom-control-label" for="new-yes">Yes</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="new-no" value="new-no" name="newPlayer">
+            <label class="custom-control-label" for="new-no">No</label>
+        </div>
+    </div>
+</div>

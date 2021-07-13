@@ -1,0 +1,53 @@
+{% extends "base.fhtml" %}
+{% block title %}Familiarizing yourself ({{ guest_role }}){% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Familiarizing yourself" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container content-wrapper">
+
+        <div class="row justify-content-center">
+            <div class="col-xs-12">
+                <h2>Step 1: familiarize yourself with your virtual home</h2>
+
+                {% include "instructions_" + guest_role + "_training_intro.fhtml" %}
+                <p class="h5">
+                    Your role: <b>{{ guest_role }}</b>
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center jumbotron">
+            <div class="col-xs-12 text-center">
+                <video width="750" controls autoplay muted>
+                    <source src="{{ url_for('static', filename='videos/bread_placing.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+
+                <form action="{{ action }}" method="get" class="form" id="next-form">
+                    <input type="hidden" id="guest_role" name="guest_role" value="{{ guest_role }}">
+
+                    <!-- This is actually used to store the NEXT STATE! -->
+                    <input type="hidden" id="state" name="state" value="{{ state }}">
+                    <input type="hidden" id="prev_state" name="prev_state" value="{{ prev_state }}">
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

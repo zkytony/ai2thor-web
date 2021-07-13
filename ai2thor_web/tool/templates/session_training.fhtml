@@ -1,0 +1,83 @@
+{% extends "base.fhtml" %}
+{% block title %}Session (Train){% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Training" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="row justify-content-center">
+        <div class="col-xs-12">
+            <h2>Step 1: familiarize yourself with your virtual home</h2>
+            <br>
+            <h5>Feel free to interact in the environment below, <span class="text-success"><b>{{ guest_role }}</b>.</span></h5>
+            <div class="row justify-content-center mt-5">
+                <div class="col-6 text-center">
+                    <span id="before-count-down">
+                        Waiting to load Ai2Thor...
+                    </span>
+                    <span id="count-down" class="border border-warning p-2 font-weight-bold d-none">
+                    </span>
+                    <span id="after-count-down-complete" class="d-none">
+                        <b style="color:red">Times up.</b> Click <b>Next</b></h5>.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thor interaction area -->
+    <div class="container content-wrapper">
+        {% with phase="train", session_id=session.id%}
+            {% include 'thor_area.fhtml' %}
+        {% endwith %}
+    </div>
+
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <form action="{{ action }}" method="get" class="form" id="next-form">
+                <input type="hidden" id="guest_role" name="guest_role" value="{{ guest_role }}">
+
+                <!-- This is actually used to store the NEXT STATE! -->
+                <input type="hidden" id="state" name="state" value="{{ state }}">
+                <input type="hidden" id="prev_state" name="prev_state" value="{{ prev_state }}">
+                <button type="submit" class="btn btn-primary" disabled>Next</button>
+
+            </form>
+        </div>
+    </div>
+    <script type=text/javascript src="{{url_for('static', filename='session_train_test.js') }}"></script>
+    <script>
+     // onLoadCallback is a global variable defined in thor_area.fhtml
+     onLoadCallback = function(request) {
+         // hide the "waiting..." message
+         $("#before-count-down").addClass("d-none");
+         $("#count-down").removeClass("d-none");
+
+         // start the counter
+         var called = false;
+         setCountDown({{ allowed_time }}, function() {
+             // when countdown complete, put up the overlay
+             $("#thor-area .overlay").css("display", "block");
+             $("#next-form button[type='submit']").prop("disabled", false);
+
+             // Stop the thor Unity
+             if (called === false) {
+                 stopThorInstance(function() {
+                     // hide clock, show message after countdown finishes
+                     $("#count-down").addClass("d-none");
+                     $("#after-count-down-complete").removeClass("d-none");
+                 });
+                 called = true;
+             }
+         });
+     }
+    </script>
+{% endblock %}

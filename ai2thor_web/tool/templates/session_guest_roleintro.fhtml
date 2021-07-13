@@ -1,0 +1,59 @@
+{% extends "base.fhtml" %}
+{% block title %}Welcome{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Welcome" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container content-wrapper">
+
+        <!-- Many variables are passed directly down to this user_info template-->
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <p>
+                            <b>Please read the following instructions.</b>
+                        </p>
+                    </div>
+                    <div class="col-12 border border-secondary bg-light p-5">
+                        <h2>Task Description</h2>
+                        <br>
+                        {#% if guest_role == "controller" %#}
+                        {% include "instructions_" + guest_role + "_intro.fhtml" %}
+
+                        {#% elif guest_role == "assistant" %#}
+                            {#% include "instructions_assistant_intro.fhtml" %#}
+                        {#% endif %#}
+                        <p class="h5">
+                            When finished reading, click <b>Next</b> to continue.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4 mb-4">
+            <div class="col-10 text-center">
+                <form action="{{ action }}" method="get" class="form">
+
+                    <input type="hidden" id="guest_role" name="guest_role" value="{{ guest_role }}">
+
+                    <!-- This is actually used to store the NEXT STATE! -->
+                    <input type="hidden" id="state" name="state" value="{{ state }}">
+                    <input type="hidden" id="prev_state" name="prev_state" value="{{ prev_state }}">
+
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.fhtml" %}
+{% block title %}Testing Intro{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Testing Intro" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="overlay" id="overlay"></div>
+    <div class="position-fixed d-none p-5 bg-light shadow mb-5 rounded" id="zoom-share-alert"
+         style="left: 50%; transform: translate(-50%, 100%); z-index:5;">
+        Please share your screen in <span class="text-primary">Zoom</span> now.
+        <button type="submit" class="btn btn-primary">OK, done</button>
+    </div>
+
+    <div class="container content-wrapper">
+
+        <div class="row justify-content-center">
+            <div class="col-xs-12">
+                <h2>Step 2: searching for a target object</h2>
+
+                {% include "instructions_" + guest_role + "_testing_intro.fhtml" %}
+            </div>
+        </div>
+
+        <div class="row justify-content-center jumbotron">
+            <div class="col-xs-12 text-center">
+                <video width="750" controls autoplay muted>
+                    <source src="{{ url_for('static', filename='videos/found_egg.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <form action="{{ action }}" method="get" class="form" id="next-form">
+                    <input type="hidden" id="guest_role" name="guest_role" value="{{ guest_role }}">
+
+                    <!-- This is actually used to store the NEXT STATE! -->
+                    <input type="hidden" id="state" name="state" value="{{ state }}">
+                    <input type="hidden" id="prev_state" name="prev_state" value="{{ prev_state }}">
+                    <button type="submit" class="btn btn-primary">Next</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Prompt share screen -->
+    {% if guest_role == "controller" %}
+        <script>
+         $(document).ready(function() {
+
+             $(document).on("submit", "#next-form", function(event) {
+                 event.preventDefault();
+                 $("#zoom-share-alert").removeClass("d-none");
+                 $("#next-form button[type=submit]").prop("disabled", true);
+                 $("#overlay").css("display", "block");
+             });
+
+             $(document).on("click", "#zoom-share-alert button[type=submit]", function(event) {
+                 $("#next-form")[0].submit();   // needs to call through the javascript object.
+             });
+
+         });
+        </script>
+    {% endif %}
+{% endblock %}

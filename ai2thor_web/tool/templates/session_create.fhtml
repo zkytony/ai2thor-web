@@ -1,0 +1,23 @@
+{% extends "base.fhtml" %}
+{% block title %}Create Session{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Welcome" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container h-100">
+        <div class="w-100 p-5">
+            <h1 class="text-center">Session {{ session_id }} Not Found</h1>
+        </div>
+        <div class="w-50 p-3 center-page">
+            {% include "session_create_form.fhtml" %}
+        </div>
+    </div>
+{% endblock %}

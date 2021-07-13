@@ -1,0 +1,127 @@
+{% extends "base.fhtml" %}
+{% block title %}{{ guest_role }} | Session (Test) {% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Test" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="row justify-content-center">
+        <div class="col-xs-12">
+            <h2>Step 2: searching for a target object</h2>
+            <br>
+            {% if guest_role == "controller" %}
+                <h5>You can start searching as soon as the environment is loaded.</h5>
+                <h5>Target object is: <b>{{ session.target_object(round_num) }}</b></h5>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-6 text-center">
+                        <span id="before-count-down">
+                            Waiting to load Ai2Thor...
+                        </span>
+                        <span id="count-down" class="border border-warning p-2 font-weight-bold d-none">
+                        </span>
+                        <span id="after-count-down-complete" class="d-none">
+                            <b style="color:red">Times up.</b> Click <b>Next</b></h5>.
+                        </span>
+                    </div>
+                </div>
+
+            {% else %}
+                <h5><b class="text-success">{{ guest_role }}</b>, below is a 2D plot of object locations</h5>
+                <h5><b>Pro tip:</b> Zoom in on your browser to see the plot more clearly</h5>
+                <h5>Target object is: <b>{{ session.target_object(round_num) }}</b></h5>
+            {% endif %}
+            <br>
+        </div>
+    </div>
+
+    <!-- Thor interaction area -->
+    <div class="container content-wrapper">
+
+        {% if guest_role == "controller" %}
+            {% with phase="test", session_id=session.id%}
+                {% include 'thor_area.fhtml' %}
+            {% endwith %}
+
+            <!-- controller can declare done -->
+            <div class="row justify-content-center d-none" id="found-btn-wrapper">
+                <div class="col-12 text-center">
+                    <button id="found-btn" class="btn btn-success" name="finish">I found it!</button>
+                </div>
+            </div>
+        {% else %}
+            <!-- assistant -->
+            <div class="row justify-content-center jumbotron">
+                <div class="col-xs-12">
+                    <img id="thor-objects-img" width="1000px"
+                         src="{{ url_for("static",
+                              filename="images/scene_scatter_plots/"+scene_name+"-default.png") }}">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <form action="{{ action }}" method="get" class="form" id="next-form">
+                <input type="hidden" id="guest_role" name="guest_role" value="{{ guest_role }}">
+
+                <!-- This is actually used to store the NEXT STATE! -->
+                <input type="hidden" id="round_num" name="round_num" value="{{ round_num }}">
+                <input type="hidden" id="state" name="state" value="{{ state }}">
+                <input type="hidden" id="prev_state" name="prev_state" value="{{ prev_state }}">
+                {% if guest_role == "controller" %}
+                    <!-- disable Next initially for controller -->
+                    <button type="submit" class="btn btn-primary" disabled>Next</button>
+                {% else %}
+                    <button type="submit" class="btn btn-primary">Next</button>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    {% if guest_role == "controller" %}
+        <script type=text/javascript src="{{url_for('static', filename='session_train_test.js') }}"></script>
+        <script>
+         var countDown = undefined;
+         // onLoadCallback is a global variable defined in thor_area.fhtml
+         onLoadCallback = function(request) {
+             // hide the "waiting..." message
+             $("#before-count-down").addClass("d-none");
+             $("#count-down").removeClass("d-none");
+
+             // display 'i found it' button
+             $("#found-btn-wrapper").removeClass("d-none");
+
+             // start the counter
+             var called = false;
+             countDown = setCountDown({{ allowed_time }}, function() {
+                 // when countdown complete, put up the overlay
+                 $("#thor-area .overlay").css("display", "block");
+                 $("#found-btn").prop("disabled", true);
+
+                 // Stop the thor Unity
+                 if (called === false) {
+                     stopThorInstance(function() {
+                         // hide clock, show message after countdown finishes
+                         $("#count-down").addClass("d-none");
+                         $("#after-count-down-complete").removeClass("d-none");
+                         $("#next-form button[type='submit']").prop("disabled", false);
+                     });
+                     called = true;
+                 }
+             });
+         }
+        </script>
+        <script type=text/javascript src="{{url_for('static', filename='session_testing.js') }}"></script>
+    {% endif %}
+
+{% endblock %}

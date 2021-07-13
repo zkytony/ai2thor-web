@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+            {% block styles %}
+                <!-- Bootstrap CSS -->
+                {{ bootstrap.load_css() }}
+            {% endblock %}
+
+            <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+            <!-- JQuery -->
+            <script type=text/javascript src="{{url_for('static', filename='jquery-3.6.0.js') }}"></script>
+
+            <title>{% block title %}{% endblock %}</title>
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Your page content -->
+        {% block content %}{% endblock %}
+
+        {% block scripts %}
+            <!-- Optional JavaScript -->
+            {{ bootstrap.load_js() }}
+        {% endblock %}
+
+        <div class="footer">
+            <p><a href="https://h2r.cs.brown.edu/">H2R@Brown</a></p>
+        </div>
+    </body>
+</html>

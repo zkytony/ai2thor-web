@@ -1,0 +1,33 @@
+<div id="thor-area">
+    <div class="overlay"></div>
+
+    <!-- Need to overleay image on top of canvas -->
+    <div class="thor-display">
+        <img id="thor-img" src="">
+        <canvas id="thor-canvas" width="0" height="0"></canvas>
+    </div>
+
+    <div id="thor-interactions">
+        <div class="btn-group"></div>
+    </div>
+
+    <script type=text/javascript src="{{url_for('static', filename='thor_interact.js') }}"></script>
+    <script>
+     // global variables
+     var queryURL = "{{ url_for('sessmgr.session_thor_act', id=session_id) }}";
+     var guestRole = "{{ guest_role }}";
+     var phase = "{{ phase }}";
+     var roundNum = "{{ round_num }}";
+     var onLoadCallback = undefined;
+
+     $(document).ready(function() {
+         loadAi2ThorInstance(onLoadCallback);
+     });
+    </script>
+    <script>
+     // don't just refresh
+     window.onbeforeunload = function() {
+         return "Progress will be lost and session will be corrected. Are you sure?";
+     }
+    </script>
+</div>

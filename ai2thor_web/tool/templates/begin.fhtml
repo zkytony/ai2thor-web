@@ -1,0 +1,50 @@
+{% extends "base.fhtml" %}
+{% block title %}Begin{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Instructions" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container content-wrapper">
+
+        <div id="agreement">
+            <h2>Instructions</h2>
+            <b>Lorem Ipsum</b> is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the lea"p into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum.
+        </div>
+
+        <div class="user-info-form-wrapper">
+            <form action="/session/train" method="post" class="form" id="user-info-form">
+                <div class="form-group" id="role-input">
+                    <label for="role">Role</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="assistant" value="assistant" name="role">
+                        <label class="custom-control-label" for="assistant">Assistant</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="searcher" value="searcher" name="role">
+                        <label class="custom-control-label" for="searcher">Searcher</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
