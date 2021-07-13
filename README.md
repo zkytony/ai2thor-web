@@ -11,9 +11,13 @@ Ai2-THOR in browser.
 2. Download the following files from Google Drive:
 
    * [scenes.zip](https://drive.google.com/file/d/1WcIfUusWBfrGeDw-tVQqlcdnQiRKQyE4/view?usp=sharing)
+
+     Decompress this file under `ai2thor-web/ai2thor_web`.
+
    * [scene_scatter_plots.zip](https://drive.google.com/file/d/1d3PRWkqjH6YaBvw39MFWtmUB722-DYIQ/view?usp=sharing)
 
-    Decompress them under `ai2thor-web/ai2thor_web`.
+     Decompress them under two locations: `ai2thor-web/ai2thor_web`, and `ai2thor-web/ai2thor_web/tool/static/image`
+     (If you later find it is unnecessary to keep this at two locations, feel free to remove the one in `ai2thor-web/ai2thor_web`; I haven't verified this).
 
 
 3. Install the package:
