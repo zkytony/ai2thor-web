@@ -1,0 +1,9 @@
+<div class="navbar">
+    {% if subtitle|length > 0 %}
+        <a class="navbar-brand" href="#">Dialogue Object Search Data Collection | <b>{{ subtitle }}</b></a>
+    {% else %}
+        <a class="navbar-brand" href="#">Dialogue Object Search Data Collection</a>
+    {% endif %}
+    <div id="alert" class="d-none">{{ alert }}</div>
+    <div id="time"></div>
+</div>

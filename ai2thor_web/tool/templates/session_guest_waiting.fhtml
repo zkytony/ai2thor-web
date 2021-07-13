@@ -1,0 +1,37 @@
+{% extends "base.fhtml" %}
+{% block title %}Waiting{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Waiting" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container h-100">
+        <div class="w-100 p-5">
+            <h1 class="text-center">Waiting....</h1>
+        </div>
+    </div>
+    <!-- A form for redirection -->
+    <form action="{{ target }}" method="{{ method }}" id="the-form">
+        <input type="submit" id="submit" style="visibility:hidden">
+        {% for key, value in args.items() %}
+            <input type="hidden" name="{{ key }}" value="{{ value }}">
+        {% endfor %}
+    </form>
+    <script type=text/javascript src="{{url_for('static', filename='session_guest_waiting.js') }}"></script>
+    <script>
+     $(document).ready(function() {
+         setUpEventListener("{{ session.id }}", "{{ event_waiting }}", function(event) {
+             if (event.data == "Yes") {
+                 $("#the-form input[type=submit]").trigger("click");
+             }
+         });
+     });
+    </script>
+{% endblock %}

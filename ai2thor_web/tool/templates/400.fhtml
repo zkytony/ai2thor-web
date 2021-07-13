@@ -1,0 +1,15 @@
+{% extends "base.fhtml" %}
+{% block title %}400: Bad Request{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container h-100">
+        <div class="w-100 p-5">
+            <h1 class="text-center">400: Bad Request</h1>
+        </div>
+    </div>
+{% endblock %}

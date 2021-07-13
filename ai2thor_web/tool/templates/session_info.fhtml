@@ -1,0 +1,70 @@
+<div class="container h-100">
+    <div class="row center-page">
+        <div class="col-10">
+            <div class="col-12">
+                <h1 class="text-center">Session {{ session.id }}</h1>
+            </div>
+            <!-- method 1 - sizing classes -->
+            <ul class="list-group d-flex flex-row flex-wrap" id="participants-info">
+                <li class="list-group-item w-100 list-group-item-action"><b>Controller:</b> {{ session.controller }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>Assistant:</b> {{ session.assistant }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>Monitor:</b> {{ session.monitor }}</li>
+            </ul>
+            <hr class="m-2">
+            <ul class="list-group d-flex flex-row flex-wrap" id="task-info">
+                <li class="list-group-item w-100 list-group-item-action"><b>Floor Plan:</b> {{ session.floor_plan }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>Target Objects:</b> {{ session.target_objects }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>Finished:</b> {{ session.finished }}</li>
+            </ul>
+            <hr class="m-2">
+            <ul class="list-group d-flex flex-row flex-wrap" id="time-info">
+                <li class="list-group-item w-100 list-group-item-action"><b>Create time:</b> {{ session.create_time }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>Start time:</b> {{ session.start_time }}</li>
+                <li class="list-group-item w-100 list-group-item-action"><b>End time:</b> {{ session.end_time }}</li>
+            </ul>
+
+            <h4 class="mt-4">Guests joining</h4>
+            <ul class="list-group  d-flex flex-row flex-wrap" id="joining-info">
+                <li id="controller-joining" class="list-group-item w-50 list-group-item-action "><b>Controller:</b> {{ session.controller }}</li>
+                <li id="assistant-joining" class="list-group-item w-50 list-group-item-action"><b>Assistant:</b> {{ session.assistant }}</li>
+            </ul>
+
+            <form action="{{ url_for('sessmgr.session_admin', id=session.id) }}">
+                <div class="col-12 mt-4">
+                    <div class="row">
+                        <div class="col-6" align="center">
+                            <!-- if next state is None, then the session has started. So teh admin can end it. -->
+                            {% if session.start_time is none or session.end_time is not none%}
+                                <button type="submit" class="btn btn-danger" disabled>End</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-danger" name="action" value="end">End</button>
+                            {% endif %}
+                        </div>
+                        <div class="col-6" align="center">
+                            {% if session.start_time is none %}
+                                <button type="submit" class="btn btn-primary" name="action" value="start">Start</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-primary" disabled>Start</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <!-- This is actually used to store the NEXT STATE! -->
+                <input type="hidden" id="state" name="state" value="{{ next_state }}">
+                <input type="hidden" id="prev_state" name="prev_state" value="{{ state }}">
+                {% if after_wait is defined %}
+                    <input type="hidden" id="after_wait" name="after_wait" value="{{ after_wait }}">
+                {% endif %}
+            </form>
+        </div>
+    </div>
+    <script type=text/javascript src="{{url_for('static', filename='session_info.js') }}"></script>
+    <script>
+     $(document).ready(function() {
+
+         // subscribe to stream for guest joining events
+         setUpEventListener_GuestJoin("{{ session.id }}")
+
+     });
+    </script>
+</div>

@@ -1,0 +1,91 @@
+{% extends "base.fhtml" %}
+{% block title %}Please Select | Session {{ session.id }}{% endblock %}
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet"
+          href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+    <!-- Navbar -->
+    {% with subtitle="Please Select" %}
+        {% include 'navbar.fhtml' %}
+    {% endwith %}
+
+    <div class="container h-100 center-page">
+        <div class="row align-items-center h-100">
+            <div class="col-6 mx-auto" id="guest-side">
+                <div class="row justify-content-md-center ">
+                    <button name="guest" class="btn btn-lg btn-primary" value="guest">Guest</button>
+                </div>
+                <!-- The form for GUEST -->
+
+                <div class="row justify-content-md-center">
+                    <form action="/session/{{ session.id }}/guest" method="get" class="form" id="guest-entrance-form">
+                        <div class="col-12 bg-light p-4 mt-4">
+                            <div class="form-group" id="guest_role-input">
+                                <label for="guest_role">You are:</label>
+                                <div class="row justify-content-md-left p-1">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="guest-controller" value="controller" name="guest_role" required>
+                                        <label class="custom-control-label" " for="guest-controller">Controller</label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-left p-1">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="guest-assistant" value="assistant" name="guest_role">
+                                        <label class="custom-control-label" for="guest-assistant">Assistant</label>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-6 mx-auto" id="admin-side">
+                <div class="row justify-content-md-center ">
+                    <button name="admin" class="btn btn-lg btn-secondary" value="admin">Admin</button>
+                </div>
+                <div class="row justify-content-md-center ">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="alert alert-danger">
+                                {{ messages[0] }}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- The form for admin -->
+                    <form action="{{ url_for('sessmgr.session_admin_login', id=session.id) }}" method="post" class="form" id="admin-entrance-form">
+                        <div class="col-12 bg-light p-4 mt-4"><!-- Bottom row -->
+                            <div class="form-group ">
+                                <div class="row justify-content-md-center">
+                                    <label for="username" class="col-sm-3 col-md-auto col-form-label">Username:</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="username" name="username" value="" required>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <label for="password" class="col-sm-3 col-md-auto col-form-label">Password:</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="password" name="password" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

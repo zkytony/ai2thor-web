@@ -1,0 +1,10 @@
+<p class="h5">
+    <br>
+    As an <b class="text-success">assistant</b>, your goal is to assist the <i class="text-danger">controller</i> to
+    search and find a target object. The category of the object, e.g. fork, or
+    pot, will be displayed on screen. You can engage in a dialogue with the <i class="text-danger">controller</i> through your <span class="text-primary">Zoom</span> call.
+    <br></br>
+    The video below demonstrates how to begin the task and declare the object is found.
+    When finished watching, click <b>Next</b> to continue.
+</p>
+<br>

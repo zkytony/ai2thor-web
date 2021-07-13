@@ -1,0 +1,14 @@
+<!-- This form has only one field: Session ID. Used to direct to the session page -->
+<form action="/session" method="get" class="form"  id="session-id-form" >
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Session ID</span>
+        </div>
+        <input type="number" class="form-control"
+               name="id"
+               placeholder="e.g. 10000"
+               aria-label="session-id"
+               aria-describedby="basic-addon1">
+        <button type="submit" class="btn btn-secondary">Go</button>
+    </div>
+</form>

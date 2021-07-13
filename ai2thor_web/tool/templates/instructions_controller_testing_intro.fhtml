@@ -1,0 +1,11 @@
+<p class="h5">
+    <br>
+    As a <b class="text-success">controller</b>, your goal is to search and find
+    a target object, by controlling an agent in a virtual environment. The
+    category of the object, e.g. fork, or pot, will be displayed on screen.
+    You can engage in a dialogue with the <i class="text-danger">assistant</i> through your <span class="text-primary">Zoom</span> call.
+    <br></br>
+    The video below demonstrates how to begin the task and declare the object is found.
+    When finished watching, click <b>Next</b> to continue.
+</p>
+<br>

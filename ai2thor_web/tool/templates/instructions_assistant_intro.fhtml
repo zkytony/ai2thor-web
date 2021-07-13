@@ -1,0 +1,38 @@
+<p class="h5">
+    Imagine the following scenario. You live in an apartment together with your
+    family. One day, you went out for work, and you received a video-call from a
+    family member. He is looking for something, and believes you may have a
+    better idea. You take the call, and you can see what he sees while
+    talking with him.
+</p>
+<br>
+<p class="h5">
+    You will engage in a dialogue with another person, who acts as the family
+    member. That person controls an agent in a virtual, home-like environment in
+    his browser. Your goal is to assist him in finding a target object (such as
+    a <b>fork</b> or a <b>pot</b>).
+    Hence, you are the <b class="text-success">assistant</b>. You
+    will conduct the dialogue through
+    <span class="text-primary">Zoom</span> with the other person (i.e. the <b>controller</b>).
+    Mimicking the video call, he will share the screen of his browser.
+</p>
+<br>
+<h4>Overview</h4>
+<p class="h5">
+    You will go through the following process.
+    <ol>
+        <li class="h5">You will first be shown an interface of a virtual home
+            environment, identical to what the controller will use. You can
+            control the agent by clicking on the interface. A brief tutorial
+            video will be available to demonstrate this interface. You will have <b>2 minutes</b> to familiarize
+            yourself with "your home".</li>
+
+        <li class="h5">
+            Then, you will enter the real task.  <!-- For <b>1 round</b> -->
+            A target object category will be shown, and you will engage in a
+            dialogue with the controller to search for the target object. You
+            will have a total of <b>2 minutes</b> to search for it. If you both
+            agree the object is found, the controller will decalre task completion.
+        </li>
+    </ol>
+</p>
