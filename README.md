@@ -31,9 +31,9 @@ Ai2-THOR in browser.
 
     Resolve any dependency issue, if arise.
     
-5. Change configuration in [myconfig.py](https://github.com/zkytony/ai2thor-web/blob/master/ai2thor_web/tool/myconfig.py)
+5. Change configuration in [myconfig.py](https://github.com/zkytony/ai2thor-web/blob/master/ai2thor_web/tool/myconfig.py).
    In particular:
-   ```
+   ```python
    SCENES_DATA_PATH = "../../../thortils/scenes"   # set this to the correct path to the scenes dataset
    DB_URI = 'sqlite:///../tmp-db.db'   # set this to the desired path where you want to store the flask server data.
    ```
