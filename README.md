@@ -7,22 +7,22 @@ Ai2-THOR in browser.
 
 1. Clone the repository.
 
-2.
+2. Clone and install [thortils](https://github.com/zkytony/thortils)
+
+   ```
+   git clone https://github.com/zkytony/thortils
+   cd thortils
+   git checkout v3.3.4  # Switch to the branch with the correct ai2thor version.
+   ```
+   Then, follow the [instruction steps on README](https://github.com/zkytony/thortils/tree/v3.3.4).
 
 
-2. Download the following files from Google Drive:
+3. Download (you may have already done this for the last step) [scene_scatter_plots.zip](https://drive.google.com/file/d/1d3PRWkqjH6YaBvw39MFWtmUB722-DYIQ/view?usp=sharing)
 
-   * [scenes.zip](https://drive.google.com/file/d/1WcIfUusWBfrGeDw-tVQqlcdnQiRKQyE4/view?usp=sharing)
-
-     Decompress this file under `ai2thor-web/ai2thor_web`.
-
-   * [scene_scatter_plots.zip](https://drive.google.com/file/d/1d3PRWkqjH6YaBvw39MFWtmUB722-DYIQ/view?usp=sharing)
-
-     Decompress this file under two locations: `ai2thor-web/ai2thor_web`, and `ai2thor-web/ai2thor_web/tool/static/image`
-     (If you later find it is unnecessary to keep this at two locations, feel free to remove the one in `ai2thor-web/ai2thor_web`; I haven't verified this).
+   Decompress this file under `ai2thor-web/ai2thor_web/tool/static/image`
 
 
-3. Install the package:
+4. Install the package:
 
     ```
     # When you are in ai2thor-web repository,
@@ -31,7 +31,7 @@ Ai2-THOR in browser.
 
     Resolve any dependency issue, if arise.
 
-4. Run the app
+5. Run the app
 
     ```
     cd ai2thor-web/ai2thor_web/tool
@@ -54,6 +54,6 @@ Ai2-THOR in browser.
      'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
    ```
 
-5. Visit `http://127.0.0.1:5000/`.
+6. Visit `http://127.0.0.1:5000/`.
 
-6. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
+7. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)

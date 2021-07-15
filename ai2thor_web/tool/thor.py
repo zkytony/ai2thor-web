@@ -18,7 +18,7 @@ from .myconfig import (THOR_CONFIG,
                        MOVEMENTS, MOVEMENT_PARAMS,
                        TRAIN_TIME, TEST_TIME,
                        get_acceptable_thor_actions,
-                       DATA_PATH)
+                       SESSION_DATA_PATH, SCENES_DATA_PATH)
 
 
 # Maps from (session id, guest_role) to ai2thor controller.
@@ -27,7 +27,7 @@ THOR_CONTROLLERS = {}
 ACCEPTABLE_THOR_ACTIONS = set(get_acceptable_thor_actions())
 
 sys.stdout.write("Loading scene dataset...")
-SCENE_DATASET = SceneDataset.load("../scenes")
+SCENE_DATASET = SceneDataset.load(SCENES_DATA_PATH)
 sys.stdout.write("Done.\n")
 sys.stdout.flush()
 
@@ -192,7 +192,7 @@ def get_session_start_timestr(session):
                                       .strftime("%Y-%m-%d-%H-%M-%S") + "-UTC"
     return start_timestr
 
-def save_round_log(session, round_num, rootdir=DATA_PATH):
+def save_round_log(session, round_num, rootdir=SESSION_DATA_PATH):
     """
     Saves round log in an organized way; the root of the dataset
     directory is `rootdir`.
@@ -216,7 +216,7 @@ def save_round_log(session, round_num, rootdir=DATA_PATH):
     # Remove temporary log file
     os.remove(log_file_path)
 
-def compress_session_log(session, rootdir=DATA_PATH):
+def compress_session_log(session, rootdir=SESSION_DATA_PATH):
     """
     Compresses the Session_{session_id}_{start_time} directory
     and removes the folder, to save space.
