@@ -8,7 +8,7 @@ import time
 from ..utils import nice_timestr
 from .thor import *
 from .models import db, Session, Admin, Guest, add_admin
-from .myconfig import *
+from .myconfig import TRAIN_TIME, TEST_TIME
 
 DEBUG_LEVEL = 1
 
@@ -566,7 +566,7 @@ def handle_training_state(state, session, guest):
                                guest_role=guest.role,
                                session=session,
                                round_num=0,
-                               allowed_time=constants.TRAIN_TIME,
+                               allowed_time=TRAIN_TIME,
                                prev_state=state,
                                state=State.WAITING)
 
@@ -635,7 +635,7 @@ def handle_testing_state(state, session, guest, round_num):
                                session=session,
                                guest_role=guest.role,
                                round_num=round_num,
-                               allowed_time=constants.TEST_TIME,
+                               allowed_time=TEST_TIME,
                                prev_state=state,
                                state=State.WAITING)
 

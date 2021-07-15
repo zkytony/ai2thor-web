@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+import thortils
 
 setup(name='ai2thor-web',
       packages=find_packages(),
@@ -9,7 +10,7 @@ setup(name='ai2thor-web',
           'scipy',
           'pandas',
           'matplotlib',
-          'ai2thor',
+          'ai2thor=={}'.format(thortils.AI2THOR_VERSION),
           'flask',
           'bootstrap-flask',
           'SQLAlchemy',

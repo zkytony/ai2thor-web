@@ -8,12 +8,17 @@ import tarfile
 import shutil
 from datetime import timezone, datetime, timedelta
 
-from ..thortils.thor import launch_controller, get_object_interactions,\
-    get_object_mask_pixels, get_acceptable_thor_actions
-from ..thortils.object_interactions import *
-from ..constants import MOVEMENTS, MOVEMENT_PARAMS
-from ..scene_dataset import SceneDataset, ThorSceneInfo
-from .myconfig import *
+from thortils import (launch_controller, get_object_interactions,
+                      get_object_mask_pixels)
+from thortils.interactions import *
+from thortils.scene import SceneDataset, ThorSceneInfo
+from .myconfig import (THOR_CONFIG,
+                       INTERACTION_DISTANCE,
+                       INTERACTION_PROPERTIES,
+                       MOVEMENTS, MOVEMENT_PARAMS,
+                       TRAIN_TIME, TEST_TIME,
+                       get_acceptable_thor_actions,
+                       DATA_PATH)
 
 
 # Maps from (session id, guest_role) to ai2thor controller.
@@ -85,7 +90,9 @@ def apply_action(session_id, guest_role, action, objectId=None, **kwargs):
 def get_controls(session_id, guest_role, movements=MOVEMENTS):
     # Returns controls that are possible for the current state.
     event = THOR_CONTROLLERS[(session_id, guest_role)].step(action="Pass")
-    objects, interactions = get_object_interactions(THOR_CONTROLLERS[(session_id, guest_role)])
+    objects, interactions = get_object_interactions(THOR_CONTROLLERS[(session_id, guest_role)],
+                                                    properties=INTERACTION_PROPERTIES,
+                                                    interaction_distance=INTERACTION_DISTANCE)
     bboxes2D = get_object_mask_pixels(event, objects=objects, center_only=False)
     return {"movements": movements,
             "interactions": interactions,
