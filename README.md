@@ -7,6 +7,8 @@ Ai2-THOR in browser.
 
 1. Clone the repository.
 
+2.
+
 
 2. Download the following files from Google Drive:
 
