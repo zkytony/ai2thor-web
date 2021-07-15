@@ -39,7 +39,7 @@ Ai2-THOR in browser.
    ```
    
 
-5. Run the app
+6. Run the app
 
     ```
     cd ai2thor-web/ai2thor_web/tool
@@ -62,6 +62,6 @@ Ai2-THOR in browser.
      'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
    ```
 
-6. Visit `http://127.0.0.1:5000/`.
+7. Visit `http://127.0.0.1:5000/`.
 
-7. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
+8. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
