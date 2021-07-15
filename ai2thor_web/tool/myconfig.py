@@ -43,7 +43,8 @@ TRAIN_TIME = 90  # 90 seconds to play around in the home
 TEST_TIME = 180   # 180 seconds to search for the object
 
 # File paths
-DATA_PATH = "../sessions"  # the root for all data collected from the sessions.
+SESSION_DATA_PATH = "../sessions"  # the root for all data collected from the sessions.
+SCENES_DATA_PATH = "../../../thortils/scenes"
 
 # THOR configs
 THOR_CONFIG = dict(
