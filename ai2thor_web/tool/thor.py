@@ -9,7 +9,7 @@ import shutil
 from datetime import timezone, datetime, timedelta
 
 from thortils import (launch_controller, get_object_interactions,
-                      get_object_mask_pixels)
+                      get_object_bboxes2D)
 from thortils.interactions import *
 from thortils.scene import SceneDataset, ThorSceneInfo
 from .myconfig import (THOR_CONFIG,
@@ -48,7 +48,7 @@ def start_ai2thor(session, guest_role, stop_old=True):
             return
 
     config = dict(THOR_CONFIG['controller_config'])
-    config["scene_name"] = session.scene_name
+    config["scene"] = session.scene_name
     thor_controller = launch_controller(config)
     THOR_CONTROLLERS[(session.id, guest_role)] = thor_controller
 
@@ -93,7 +93,7 @@ def get_controls(session_id, guest_role, movements=MOVEMENTS):
     objects, interactions = get_object_interactions(THOR_CONTROLLERS[(session_id, guest_role)],
                                                     properties=INTERACTION_PROPERTIES,
                                                     interaction_distance=INTERACTION_DISTANCE)
-    bboxes2D = get_object_mask_pixels(event, objects=objects, center_only=False)
+    bboxes2D = get_object_bboxes2D(event, objects=objects, center_only=False)
     return {"movements": movements,
             "interactions": interactions,
             "bboxes2D": bboxes2D}
