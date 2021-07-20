@@ -30,8 +30,16 @@ Ai2-THOR in browser.
     ```
 
     Resolve any dependency issue, if arise.
+    
+5. Change configuration in [myconfig.py](https://github.com/zkytony/ai2thor-web/blob/master/ai2thor_web/tool/myconfig.py).
+   In particular:
+   ```python
+   SCENES_DATA_PATH = "../../../thortils/scenes"   # set this to the correct path to the scenes dataset
+   DB_URI = 'sqlite:///../tmp-db.db'   # set this to the desired path where you want to store the flask server data.
+   ```
+   
 
-5. Run the app
+6. Run the app
 
     ```
     cd ai2thor-web/ai2thor_web/tool
@@ -54,6 +62,6 @@ Ai2-THOR in browser.
      'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
    ```
 
-6. Visit `http://127.0.0.1:5000/`.
+7. Visit `http://127.0.0.1:5000/`.
 
-7. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
+8. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
