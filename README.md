@@ -17,7 +17,7 @@ Ai2-THOR in browser.
    Then, follow the [instruction steps on README](https://github.com/zkytony/thortils/tree/v3.3.4).
 
 
-3. Download (you may have already done this for the last step) [scene_scatter_plots.zip](https://drive.google.com/file/d/1d3PRWkqjH6YaBvw39MFWtmUB722-DYIQ/view?usp=sharing)
+3. Download (you may have already done this for the last step) [scene_scatter_plots.zip](https://drive.google.com/file/d/1d3PRWkqjH6YaBvw39MFWtmUB722-DYIQ/view?usp=sharing). This contains sparse scatter plots. If you would like complete scatter plots, download [scene_scatter_plots_full.zip](https://drive.google.com/file/d/1PrKVLENWZKUDgl9ErTcid2wzvgeCUIzg/view?usp=sharing)
 
    Decompress this file under `ai2thor-web/ai2thor_web/tool/static/image`
 
