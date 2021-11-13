@@ -65,3 +65,6 @@ Ai2-THOR in browser.
 7. Visit `http://127.0.0.1:5000/`.
 
 8. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
+
+## Contact
+Kaiyu Zheng (kaiyu_zheng@brown.edu)
