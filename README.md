@@ -66,5 +66,20 @@ Ai2-THOR in browser.
 
 8. For tool usage, refer to [this Google Doc](https://docs.google.com/document/d/1ic2vo6WtHM4kuFavjcvv94tg9oihaTD8ROWrxmO421s/edit?usp=sharing)
 
+## Citation
+Please cite [_Dialogue Object Search_](https://arxiv.org/pdf/2107.10653.pdf), presented at
+Robotics: Science and Systems (RSS) Workshop on Robotics for People (R4P): Perspectives on Interaction, Learning and Safety, 2021
+```
+@inproceedings{dlgobjsearch-2021,
+  title = {{D}ialogue {O}bject {S}earch},
+  author = {Roy, Monica and Zheng, Kaiyu and Liu and Jason and Stefanie Tellex},
+  booktitle = {RSS Workshop on Robotics for People (R4P): Perspectives on Interaction, Learning and Safety},
+  year = {2021},
+  url = {https://arxiv.org/pdf/2107.10653.pdf},
+  note = {Extended Abstract}
+}
+```
+
+
 ## Contact
 Kaiyu Zheng (kaiyu_zheng@brown.edu)
