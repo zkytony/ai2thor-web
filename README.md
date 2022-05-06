@@ -1,6 +1,11 @@
 # ai2thor-web
 
-Ai2-THOR in browser.
+Ai2-THOR in browser. This is a useful tool if you would like to build a user study or data collection platform that let **remote, non-technical** people participate in the control of an embodied agent in Ai2-THOR over a Zoom call. Pairs of participants can be assigned two different roles to perform a session of some task (by default, object search) in Ai2-THOR, and a staff (from the research team)
+can adminstor the progress of the session.
+
+The idea of this system is illustrated by the figure below:
+
+![image](https://user-images.githubusercontent.com/7720184/167217337-3a9ac76e-88af-49fe-912c-a2c7f6f2937b.png)
 
 
 ## Setup
