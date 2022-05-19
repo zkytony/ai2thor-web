@@ -1,3 +1,17 @@
+# Copyright 2022 Kaiyu Zheng
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#     http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # Configuration specific to the app
 import thortils.constants as constants
 
@@ -15,15 +29,19 @@ INTERACTION_PROPERTIES = [
 
     # can interact with openable objects
     ("openable",
-     lambda obj: ["OpenObject"] if not obj["isOpen"] else ["CloseObject"])
+     lambda obj: ["OpenObject"] if not obj["isOpen"] else ["CloseObject"]),
 
+    ("toggleable",
+     lambda obj: ["ToggleObjectOn"] if not obj["isToggled"] else ["ToggleObjectOff"]),
 ]
 
 # Interactions allowed; Note that you need to change thor_interact.js too.
 INTERACTIONS = ["PickupObject",
                 "DropObject",
                 "OpenObject",
-                "CloseObject"]
+                "CloseObject",
+                "ToggleObjectOn",
+                "ToggleObjectOff"]
 
 # Defines navigation actions, with parameters
 MOVEMENT_PARAMS = {"MoveAhead"  :  {"moveMagnitude": constants.MOVE_STEP_SIZE},
